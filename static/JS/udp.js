@@ -50,7 +50,7 @@ function updateData() {
   else {
   totalhuella1+=data.huella;
   }
-      data6Span.textContent = totalhuella1.toFixed(7);
+      data6Span.textContent = 0;
   j=j+1;
     })
     .catch(error => {

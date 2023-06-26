@@ -62,16 +62,18 @@ function updateMarkerAndPolyline(rows) {
         marker1.setLatLng(latlng);
         app1Positions.push(latlng);
         polyline1.setLatLngs(app1Positions);
+        map.setView(latlng);
       }
     } else {
       // No hay posiciones registradas, agregar la posición inicial
       marker1.setLatLng(latlng);
       app1Positions.push(latlng);
       polyline1.setLatLngs(app1Positions);
+      map.setView(latlng);
     }
     
     // Centrar la vista del mapa en el marcador
-    map.setView(latlng);
+    
   } else if (id == 2) {
     const latestData = rows[rows.length - 1];
     const latlng = L.latLng(latestData[0], latestData[1]);
@@ -85,12 +87,14 @@ function updateMarkerAndPolyline(rows) {
         marker2.setLatLng(latlng);
         app2Positions.push(latlng);
         polyline2.setLatLngs(app2Positions);
+        map.setView(latlng);
       }
     } else {
       // No hay posiciones registradas, agregar la posición inicial
       marker2.setLatLng(latlng);
       app2Positions.push(latlng);
       polyline2.setLatLngs(app2Positions);
+      map.setView(latlng);
     }
     
     // Centrar la vista del mapa en el marcador

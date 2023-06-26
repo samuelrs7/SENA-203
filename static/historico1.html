@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="servidor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <title>WEBSERVER</title>
+    <link rel="stylesheet" href="./Styles/Main.css">
+    <link rel="stylesheet" href="./Styles/Footer.css">
+    <link rel="stylesheet" href="./Styles/Tables.css">
+    <link rel="stylesheet" href="./Styles/Calendar1.css">
+    <link rel="stylesheet" href="./Styles/Slider.css">
+    <link rel="stylesheet" href="./Styles/span.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="./img/Logo.png" alt="Logo de la empresa">
+        <h2 class="name"> SSJMAP Location Service</h2>
+      </div>
+      <nav>
+        <a href="treal.html">Tiempo real</a>
+        <a href="historico.html">Historicos</a>
+        <a href="index.html">Contato</a>
+      </nav>
+    </header>
+    <main>
+    <!--Create the table-->
+      <div class="Lateral-Bar">
+        <div class="table-div">  
+          <div class="table-div-header">LATITUD</div>
+          <span id="latitud1"> 11.027292</span>
+        </div>
+        <div class="table-div">
+          <div class="table-div-header">LONGITUD</div>
+          <span id="longitud1">-74.830036</span>
+        </div>
+        <div id="Cal">
+          <div class="start-dates-div">
+            <label for="fecha_inicio">Fecha inicial:</label>
+            <input type="date" id="fecha_inicio" name="fecha_inicio" min="2023-03-01" max="2023-05-16">
+            <label for="fecha_final">Fecha final:</label>
+            <input type="date" id="fecha_final" name="fecha_final" min="2023-03-01" max="2023-05-16">
+          </div>
+          <div class="end-dates-div">
+            <label for="hora_inicio">Hora inicial:</label>
+            <input type="time" id="hora_inicio" name="hora_inicio">
+            <label for="hora_final">Hora final:</label>
+            <input type="time" id="hora_final" name="hora_final">
+          </div>
+          <div class="vehicle-select">
+            <label for="vehicle">Vehiculo:</label>
+            <select id="vehicle" name="vehicle">
+              <option value="1">Vehiculo 1</option>
+              <option value="2">Vehiculo 2</option>
+            </select>
+          </div>
+        </div>
+        
+          <script src="Dom_elements.js"></script>
+          <button id="cons_button" type="button" onclick="consultar()">Consultar</button>
+          <button id="clear_button" type="button" onclick="limpiar()">Limpiar</button>
+          <div class="grafico">
+            <canvas id="grafico" width="200" height="250"></canvas>
+          </div>
+          <div class="table-historico">
+            <div class="table-div">
+              <div class="table-div-header">ESTIMACIÓN TOTAL</div>
+              <span id="data1"> Esperando datos...</span>
+            </div>
+          </div>
+          <!--Create the slider to select circle range-->
+          <h3>Area's size selector</h3>
+          <div class="range">
+            <div class="sliderValue">
+              <span>100</span>
+            </div>
+            <div class="field">
+              <div class="value left">0</div>
+              <input id="sli" type="range" min="10" max="100" steps="1">
+            </div>
+          </div>
+        <div id="result-container">
+          <h2>¿Cuándo estuvo el vehiculo?:</h2>
+          <ul id="result-list"></ul>
+        </div>
+      </div>
+      <!-- Create de MAP DIV -->
+      <div id="m">      
+        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+        crossorigin=""></script>
+        <!--Create the map-->
+        <div id="map"></div>
+      </div>
+      <!-- Scripts -->
+      <script src="./JS/chart.js"></script>
+      <script src="./JS/consult.js"></script>
+      <script src="./JS/limpiar.js"></script>
+      <script src="./JS/udp1.js"></script>
+      <script src="./JS/udp.js"></script>
+      <script src="./JS/slider.js"></script>
+      <script src="./JS/map1.js"></script>
+      <script src="./JS/Dom_elements.js"></script> 
+    </main>
+    <footer>
+      <div class="footer">
+        <div class="sb_footer section_padding">
+          <div class='sb_footer-links'>
+            <div class='sb_footer-links_div'>
+              <h4>For Business</h4>
+              <a href='#'>
+                <p>Employer</p>
+              </a>
+              <a href='#'>
+                <p>Health Plan</p>
+              </a>
+              <a href='#'>
+                <p>Individual</p>
+              </a>
+            </div>
+            <div class='sb_footer-links_div'>
+              <h4>Resources</h4>
+              <a href='#'>
+                <p>Resource Center</p>
+              </a>
+              <a href='#'>
+                <p>Testimonials</p>
+              </a>
+              <a href='#'>
+                <p>STV</p>
+              </a>
+            </div>
+            <div class='sb_footer-links_div'>
+              <h4>Partners</h4>
+              <a href='#'>
+                <p>Swing Tech</p>
+              </a>
+            </div>
+            <div class='sb_footer-links_div'>
+              <h4>Company</h4>
+              <a href='#'>
+                <p>About</p>
+              </a>
+              <a href='#'>
+                <p>Press</p>
+              </a>
+              <a href='#'>
+                <p>Career</p>
+              </a>
+              <a href='#'>
+                <p>Contact</p>
+              </a>
+            </div>
+            <div class='sb_footer-links_div'>
+              <h4>Coming soon on</h4>
+              <div class='socialmedia'>
+                <p><img src='./img/fb.png' alt=''></p>
+                <p><img src='./img/twitter.png' alt=''></p>
+                <p><img src='./img/ig.png' alt=''></p>
+                <p><img src='./img/linkedin.png' alt=''></p>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class='sb_footer-below'>
+            <div class='sb_footer-copyright'>
+              @2023 SSJMAP Location Services. All rights reserved.
+            </div>
+            <div class='sb_footer-below-links'>
+              <a href='/terms'><div> <p>Terms of Service</p> </div></a>
+              <a href='/privacy'><div> <p>Privacy</p> </div></a>
+              <a href='/security'><div> <p>Security</p> </div></a>
+              <a href='/cookies'><div> <p>Cookie Declaration</p> </div></a>
+            </div>
+          </div>
+        </div>
+      </div>      
+    </footer>
+</html>
